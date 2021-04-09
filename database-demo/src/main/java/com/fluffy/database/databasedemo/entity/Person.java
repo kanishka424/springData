@@ -1,14 +1,23 @@
 package com.fluffy.database.databasedemo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity//defines an entity ,14th ,03 Journey From Spring  JDBC to JPA
+@Table(name="person")//simply define the table which the entity maps to,not necessary for our example
 public class Person {
+    @Id//definies the primary key
+    @GeneratedValue//Hibernate generates the value for us
     public int id;
+
     public String name;
     public String location;
     public Date  birthDate;
 
-    public Person() {
+    public Person() {//must need for an entity class
 
     }
 
@@ -61,3 +70,8 @@ public class Person {
         this.birthDate = birthDate;
     }
 }
+
+
+//===================================NOTE=====================
+//if the entity name and table name are same we don't nee @Table
+//if the fireld name and column name are same we don't nee @Column
