@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+//this class is for JDBC
+
 @Repository//how to define the repository
 public class PersonJdbcDao {
 

@@ -1,13 +1,11 @@
 package com.fluffy.database.databasedemo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity//defines an entity ,14th ,03 Journey From Spring  JDBC to JPA
 @Table(name="person")//simply define the table which the entity maps to,not necessary for our example
+@NamedQuery(name="find_all_persons",query="select P from Person P")//this is how we define named query,"select P from Person P" Person refers to class,thi i not sql but jpql
 public class Person {
     @Id//definies the primary key
     @GeneratedValue//Hibernate generates the value for us
@@ -23,6 +21,12 @@ public class Person {
 
     public Person(int id, String name, String location, Date birthDate) {
         this.id = id;
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
+    }
+
+    public Person( String name, String location, Date birthDate) {//becaue we let JPA decide what the newly inserted objects id is when inserting new person we hpuld not pass an  id
         this.name = name;
         this.location = location;
         this.birthDate = birthDate;
